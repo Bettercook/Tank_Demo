@@ -3,6 +3,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# 忽略根目录下的 Temp 文件夹
+Temp/
+# 兼容大小写，避免 Windows 下的问题
+temp/
+# 额外忽略所有临时文件类型
+*.tmp
+*.temp
+
 # User-specific files
 *.rsuser
 *.suo
