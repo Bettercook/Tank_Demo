@@ -9,7 +9,9 @@ public abstract class BasePanel : MonoBehaviour
     //专门用于控制面板透明度的组件
     private CanvasGroup canvasGroup;
     //淡入淡出的速度
-    private float alphaSpeed = 10;
+    //private float alphaSpeed = 35;
+    [Header("淡入淡出时长（秒），推荐0.2~0.3")]
+    public float fadeDuration = 0.2f; // 核心：固定动画时长，0.2秒最丝滑
 
     //当前的显隐状态
     public bool isShow = false;
@@ -84,45 +86,61 @@ public abstract class BasePanel : MonoBehaviour
     //        }
     //    }
     //}
-    // 核心修复：用协程淡入，不依赖Update！
     public virtual void ShowMe()
     {
         isShow = true;
-        StopAllCoroutines();
-        StartCoroutine(FadeIn());
+        StopAllCoroutines(); // 停止旧协程，防止动画冲突
+        StartCoroutine(SmoothFadeIn()); // 新的平滑淡入
     }
 
-    // 核心修复：用协程淡出，不依赖Update！
     public virtual void HideMe(UnityAction callBack)
     {
         isShow = false;
         hideCallBack = callBack;
-        StopAllCoroutines();
-        StartCoroutine(FadeOut());
+        StopAllCoroutines(); // 停止旧协程，防止动画冲突
+        StartCoroutine(SmoothFadeOut()); // 新的平滑淡出
     }
 
-    // 淡入协程（场景切换也能正常执行）
-    private IEnumerator FadeIn()
+    /// <summary>
+    /// 平滑淡入（Mathf.Lerp插值，0卡顿）
+    /// </summary>
+    private IEnumerator SmoothFadeIn()
     {
-        canvasGroup.alpha = 0;
-        while (canvasGroup.alpha < 1)
+        float currentAlpha = canvasGroup.alpha;
+        float elapsedTime = 0; // 已执行的动画时间
+
+        // 插值渐变：从当前透明度到1，耗时fadeDuration
+        while (elapsedTime < fadeDuration)
         {
-            canvasGroup.alpha += alphaSpeed * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            // 归一化进度：0→1，保证动画速度不随帧率变化
+            float progress = Mathf.Clamp01(elapsedTime / fadeDuration);
+            // 平滑插值alpha，比直接累加更加丝滑
+            canvasGroup.alpha = Mathf.Lerp(currentAlpha, 1, progress);
             yield return null;
         }
-        canvasGroup.alpha = 1;
+
+        canvasGroup.alpha = 1; // 最终强制拉满，避免浮点数精度问题
     }
 
-    // 淡出协程
-    private IEnumerator FadeOut()
+    /// <summary>
+    /// 平滑淡出（Mathf.Lerp插值，0卡顿）
+    /// </summary>
+    private IEnumerator SmoothFadeOut()
     {
-        canvasGroup.alpha = 1;
-        while (canvasGroup.alpha > 0)
+        float currentAlpha = canvasGroup.alpha;
+        float elapsedTime = 0; // 已执行的动画时间
+
+        // 插值渐变：从当前透明度到0，耗时fadeDuration
+        while (elapsedTime < fadeDuration)
         {
-            canvasGroup.alpha -= alphaSpeed * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / fadeDuration);
+            canvasGroup.alpha = Mathf.Lerp(currentAlpha, 0, progress);
             yield return null;
         }
-        canvasGroup.alpha = 0;
-        hideCallBack?.Invoke();
+
+        canvasGroup.alpha = 0; // 最终强制拉到0
+        hideCallBack?.Invoke(); // 执行隐藏回调（销毁/移除）
     }
 }
