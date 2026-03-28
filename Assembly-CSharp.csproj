@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Data\MusicData.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsDataMgr\PlayerPrefsDataMgr.cs" />
     <Compile Include="Assets\Scripts\UI\BeginScene\BKMusic.cs" />
+    <Compile Include="Assets\Scripts\UI\GameScene\GamePanel.cs" />
     <Compile Include="Assets\Scripts\UI\BeginScene\SettingPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BeginScene\BeginPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BeginScene\RankPanel.cs" />

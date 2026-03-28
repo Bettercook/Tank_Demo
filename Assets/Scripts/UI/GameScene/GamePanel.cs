@@ -1,0 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GamePanel : BasePanel
+{
+    //分数
+    public Text labScore;
+    //时间
+    public Text labTime;
+    //退出按钮
+    public Button btnQuit;
+    //设置
+    public Button btnSetting;
+    //血量图
+    public Image texHP;
+
+    //血条控件的宽
+    public float hpW = 450;
+
+    //记录玩家当前的分数
+    [HideInInspector]
+    public int nowScore = 0;
+
+    [HideInInspector]
+    public float nowTime = 0;
+
+    private int time;
+
+    public override void Init()
+    {
+        //打开设置面板
+        btnSetting.onClick.AddListener(()=>
+        {
+            UIManager.Instance.ShowPanel<SettingPanel>();
+        });
+        //退出 弹出确定退出的按钮
+        btnQuit.onClick.AddListener(()=>
+        {
+            
+        });
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //通过帧间隔时间进行累加 会比较准确
+        nowTime += Time.deltaTime;
+
+        time = (int)nowTime;
+        labTime.text = "";
+
+        if (time / 3600 > 0)
+        {
+            labTime.text += time / 3600 + "时";
+        }
+        if (time % 3600 / 60 > 0 || labTime.text != "")
+        {
+            labTime.text += time % 3600 / 60 + "分";
+        }
+        labTime.text += time % 60 + "秒";
+    }
+
+    /// <summary>
+    /// 提供给外部的加分方法
+    /// </summary>
+    /// <param name="score"></param>
+    public void AddScore(int score)
+    {
+        nowScore += score;
+        //更新界面的分数显示
+        labScore.text = nowScore.ToString();
+    }
+
+    /// <summary>
+    /// 更新血条的方法
+    /// </summary>
+    /// <param name="maxHP"></param>
+    /// <param name="HP"></param>
+    public void UpdateHP(int maxHP, int HP)
+    {
+        (texHP.transform as RectTransform).sizeDelta = new Vector2((float)HP / maxHP * hpW, 50);
+    }
+}
