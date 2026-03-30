@@ -11,9 +11,9 @@ public class UIManager
     //用于存储显示着的面板 每显示一个面板，就会存入这个字典
     //隐藏面板时直接获取字典中的面板进行隐藏
     private Dictionary<string, BasePanel> panlDic = new Dictionary<string, BasePanel>();
-    
-    //场景中的Canvas对象，用于设置为面板的父对象
-    private Transform canvasTrans;
+
+    //暴露全局Canvas的Transform，方便血条挂载
+    public Transform canvasTrans;
 
     private UIManager()
     {

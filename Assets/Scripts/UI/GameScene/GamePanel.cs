@@ -34,11 +34,17 @@ public class GamePanel : BasePanel
         btnSetting.onClick.AddListener(()=>
         {
             UIManager.Instance.ShowPanel<SettingPanel>();
+
+            //改变时间缩放值 为0 即时间停止
+            Time.timeScale = 0;
         });
         //退出 弹出确定退出的按钮
         btnQuit.onClick.AddListener(()=>
         {
-            
+            UIManager.Instance.ShowPanel<QuitPanel>();
+
+            //改变时间缩放值 为0 即时间停止
+            Time.timeScale = 0;
         });
 
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 447432}
   - component: {fileID: 3381682}
   - component: {fileID: 2395948}
+  - component: {fileID: 8314280172045756633}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5624223, y: 0.3036032, z: -0.23296295, w: 0.73296285}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 460212}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!33 &3381682
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8314280172045756633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f853aff20f2fad4691e39072c859e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 120
 --- !u!1 &177632
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460212}
   - component: {fileID: 13533102}
+  - component: {fileID: 8805546760910047386}
   m_Layer: 0
   m_Name: Collectible_WeaponRandom
   m_TagString: Untagged
@@ -131,9 +146,27 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8805546760910047386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5bb9df91197d542b942859d39ced6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponObj:
+  - {fileID: 9132293161213831892, guid: ac5dd37427f71db458dc7c02d6e9cca9, type: 3}
+  - {fileID: 6759752929081716911, guid: 1fb5dd66a65a7074286f68a7e9986ffc, type: 3}
+  - {fileID: 2339866133017841323, guid: 1d4810248f38ca04fa96af80c75eca7e, type: 3}
+  - {fileID: 1641255548322311451, guid: 73f7e935d5a07554c916bd69b80bd89c, type: 3}
+  getEff: {fileID: 3509306376227078554, guid: 4b57646c6cc680d4b8f420a233d0f0d1, type: 3}

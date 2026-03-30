@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SettingPanel : BasePanel
@@ -60,5 +61,11 @@ public class SettingPanel : BasePanel
         base.ShowMe();
         //每次显示面板时顺便把面板上的内容也更新了
         UpdatePanelInfo();
+    }
+
+    public override void HideMe(UnityAction callBack)
+    {
+        base.HideMe(callBack);
+        Time.timeScale = 1;
     }
 }

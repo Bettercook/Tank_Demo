@@ -8,6 +8,9 @@ public abstract class BasePanel : MonoBehaviour
 {
     //专门用于控制面板透明度的组件
     private CanvasGroup canvasGroup;
+
+    //新增：受保护属性 子类可以访问 
+    protected CanvasGroup CanvasGroup => canvasGroup;
     //淡入淡出的速度
     //private float alphaSpeed = 35;
     [Header("淡入淡出时长（秒），推荐0.2~0.3")]
@@ -112,7 +115,7 @@ public abstract class BasePanel : MonoBehaviour
         // 插值渐变：从当前透明度到1，耗时fadeDuration
         while (elapsedTime < fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             // 归一化进度：0→1，保证动画速度不随帧率变化
             float progress = Mathf.Clamp01(elapsedTime / fadeDuration);
             // 平滑插值alpha，比直接累加更加丝滑
@@ -134,7 +137,8 @@ public abstract class BasePanel : MonoBehaviour
         // 插值渐变：从当前透明度到0，耗时fadeDuration
         while (elapsedTime < fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
+
             float progress = Mathf.Clamp01(elapsedTime / fadeDuration);
             canvasGroup.alpha = Mathf.Lerp(currentAlpha, 0, progress);
             yield return null;
