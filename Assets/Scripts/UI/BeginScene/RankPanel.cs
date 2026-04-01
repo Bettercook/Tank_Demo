@@ -23,7 +23,7 @@ public class RankPanel : BasePanel
             labTime.Add(transform.Find("Time/labTime" + i).GetComponent<Text>());
         }
 
-        btnClose.onClick.AddListener(()=>
+        btnClose.onClick.AddListener(() =>
         {
             UIManager.Instance.HidePanel<RankPanel>();
         });
@@ -57,6 +57,8 @@ public class RankPanel : BasePanel
             }
             labTime[i].text += time % 60 + "√Î";
         }
+
+
     }
 
     public override void ShowMe()

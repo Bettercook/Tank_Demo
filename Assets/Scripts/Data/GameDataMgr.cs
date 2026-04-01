@@ -49,7 +49,7 @@ public class GameDataMgr
         //排序
         rankData.list.Sort((a, b) => a.time < b.time ? -1 : 1);
         //从尾部往前遍历，移除10条以外的数据
-        for (int i = rankData.list.Count - 1; i >= 10; i--)
+        for (int i = rankData.list.Count - 1; i >= 5; i--)
         {
             rankData.list.RemoveAt(i);
         }

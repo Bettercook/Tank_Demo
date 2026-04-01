@@ -80,8 +80,10 @@
     <Compile Include="Assets\Scripts\UI\BeginScene\BeginPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BeginScene\RankPanel.cs" />
     <Compile Include="Assets\Scripts\Game\Object\MonsterObj.cs" />
+    <Compile Include="Assets\Scripts\Game\Object\EndPoint.cs" />
     <Compile Include="Assets\Scripts\Game\Object\MonsterTower.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\GameScene\WinPanel.cs" />
     <Compile Include="Assets\Scripts\Game\Object\CameraMove.cs" />
     <Compile Include="Assets\Scripts\UI\GameScene\QuitPanel.cs" />
     <Compile Include="Assets\Scripts\Game\Object\CubeObject.cs" />

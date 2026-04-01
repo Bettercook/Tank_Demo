@@ -44,9 +44,15 @@ public class UIManager
         //把这个面板脚本存储到字典中 方便后面的获取和隐藏
         panlDic.Add(panelName, panel);
         //调用显示逻辑
-        panel.ShowMe();
+        //panel.ShowMe();
+        panel.StartCoroutine(ShowPanelDelay(panel));
 
         return panel;
+    }
+    private IEnumerator ShowPanelDelay(BasePanel panel)
+    {
+        yield return null; // 等待1帧，这一帧会执行Start() → Init()
+        panel.ShowMe();    // 此时UI已经初始化完成，绝对安全！
     }
 
     /// <summary>
