@@ -30,6 +30,11 @@ public class GamePanel : BasePanel
 
     public override void Init()
     {
+        // 游戏启动时 → 隐藏鼠标
+        Cursor.visible = false;
+        // 同时锁定鼠标位置
+        Cursor.lockState = CursorLockMode.Locked;
+
         //打开设置面板
         btnSetting.onClick.AddListener(()=>
         {
@@ -67,6 +72,25 @@ public class GamePanel : BasePanel
             labTime.text += time % 3600 / 60 + "分";
         }
         labTime.text += time % 60 + "秒";
+
+        // 核心：判断是否打开了 除GamePanel外的其他面板
+        bool showPanel = UIManager.Instance.GetPanel<SettingPanel>() != null
+                      || UIManager.Instance.GetPanel<QuitPanel>() != null
+                      || UIManager.Instance.GetPanel<WinPanel>() != null
+                      || UIManager.Instance.GetPanel<LosePanel>() != null;
+
+        // 有其他面板打开 → 显示鼠标；否则 → Alt控制
+        if (showPanel)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            bool pressAlt = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
+            Cursor.visible = pressAlt;
+            Cursor.lockState = pressAlt ? CursorLockMode.None : CursorLockMode.Locked;
+        }
     }
 
     /// <summary>

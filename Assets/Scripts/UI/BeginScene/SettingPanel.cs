@@ -14,6 +14,7 @@ public class SettingPanel : BasePanel
 
     public override void Init()
     {
+        
         //´¦ÀíÒôÀÖ
         sliderMusic.onValueChanged.AddListener((v)=>
         {

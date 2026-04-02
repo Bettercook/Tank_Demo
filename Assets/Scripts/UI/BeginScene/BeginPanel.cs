@@ -13,6 +13,9 @@ public class BeginPanel : BasePanel
 
     public override void Init()
     {
+        //锁定鼠标在窗口内
+        Cursor.lockState = CursorLockMode.Confined;
+
         btnBegin.onClick.AddListener(()=>
         {
             UIManager.Instance.HidePanel<BeginPanel>(false);
@@ -37,7 +40,7 @@ public class BeginPanel : BasePanel
 
         btnRank.onClick.AddListener(()=>
         {
-            UIManager.Instance.ShowPanel<RankPanel>();
+            UIManager.Instance.ShowPanel<URankPanel>();
         });
     }
 }

@@ -11,6 +11,7 @@ public class WinPanel : BasePanel
 
     public override void Init()
     {
+
         btnSure.onClick.AddListener(()=>
         {
             //把数据记录到排行榜中，并且回到主场景中

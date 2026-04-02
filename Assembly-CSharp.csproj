@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game\Reward\PropReward.cs" />
     <Compile Include="Assets\Scripts\Game\Object\PlayerObj.cs" />
+    <Compile Include="Assets\Scripts\UI\GameScene\LosePanel.cs" />
     <Compile Include="Assets\Scripts\Game\Weapon\WeaponObj.cs" />
     <Compile Include="Assets\Scripts\Data\GameDataMgr.cs" />
     <Compile Include="Assets\Scripts\Data\RankInfo.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\Scripts\UI\GameScene\HpBar.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\Game\Reward\WeaponReward.cs" />
+    <Compile Include="Assets\Scripts\UI\BeginScene\RankItem.cs" />
     <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
     <Compile Include="Assets\Scripts\Data\MusicData.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsDataMgr\PlayerPrefsDataMgr.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Assets\Scripts\UI\BeginScene\RankPanel.cs" />
     <Compile Include="Assets\Scripts\Game\Object\MonsterObj.cs" />
     <Compile Include="Assets\Scripts\Game\Object\EndPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\BeginScene\URankPanel.cs" />
     <Compile Include="Assets\Scripts\Game\Object\MonsterTower.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\GameScene\WinPanel.cs" />

@@ -37,7 +37,10 @@ public class PlayerObj : TankBaseObj
 
     public override void Dead()
     {
-        base.Dead();
+        //因为玩家坦克摄像机是挂载在坦克上的 所以玩家坦克死亡时 会销毁摄像机
+        //base.Dead();
+        Time.timeScale = 0;
+        UIManager.Instance.ShowPanel<LosePanel>();
     }
 
     public override void Wound(TankBaseObj other)
